@@ -24,7 +24,8 @@ contract = w3.eth.contract(address=CONTRACT_ADDRESS, abi=abi)
 
 # Create claim transaction
 nonce = w3.eth.get_transaction_count(ADDRESS)
-tx = contract.functions.claim(0430).build_transaction({
+my_nonce = random.randint(0, 10**12)
+tx = contract.functions.claim(my_nonce).build_transaction({
     'from': ADDRESS,
     'nonce': nonce,
     'gas': 300000,
